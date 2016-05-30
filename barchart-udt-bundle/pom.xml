@@ -121,52 +121,9 @@
 											<groupId>${dependencyGroupId}</groupId>
 											<artifactId>${dependencyArtifactId}</artifactId>
 											<version>${dependencyVersion}</version>
-											<classifier>${arm}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${lin32}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
 											<classifier>${lin64}</classifier>
 											<type>nar</type>
 										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${mac32}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${mac64}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${win32}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${win64}</classifier>
-											<type>nar</type>
-										</artifactItem>
-
 									</artifactItems>
 								</configuration>
 							</execution>
