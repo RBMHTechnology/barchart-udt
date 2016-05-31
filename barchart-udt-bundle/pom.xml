@@ -36,7 +36,7 @@
 		<!-- bundle origin artifacts -->
 		<dependencyGroupId>com.barchart.udt</dependencyGroupId>
 		<dependencyArtifactId>barchart-udt-core</dependencyArtifactId>
-		<dependencyVersion>${snapshotVersion}</dependencyVersion>
+		<dependencyVersion>${project.version}</dependencyVersion>
 
 		<!-- unpack folder -->
 		<dependencyUnpack>${basedir}/target/nar-all</dependencyUnpack>

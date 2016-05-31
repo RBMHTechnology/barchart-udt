@@ -417,7 +417,7 @@
 				<!-- -->
 				<attachGroupId>${project.groupId}</attachGroupId>
 				<attachArtifactId>${project.artifactId}</attachArtifactId>
-				<attachVersion>${snapshotVersion}</attachVersion>
+				<attachVersion>${project.version}</attachVersion>
 				<!-- -->
 				<attachFolder>${target}/nar-all</attachFolder>
 				<attachPrefix>${project.groupId}-${project.version}</attachPrefix>
