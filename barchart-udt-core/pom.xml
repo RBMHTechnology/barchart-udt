@@ -684,7 +684,7 @@
 							</libraries>
 							<cpp>
 
-								<debug>false</debug>
+								<debug>true</debug>
 								<optimize>none</optimize>
 								<exceptions>true</exceptions>
 								<multiThreaded>true</multiThreaded>
