@@ -100,6 +100,7 @@ public class LibraryLoaderUDT implements LibraryLoader {
 
 		final List<String> sourceList = PluginPropsUDT
 				.currentReleaseLibraries(coreName);
+		sourceList.addAll(PluginPropsUDT.currentReleaseLibraries(VersionUDT.BARCHART_FALLBACK_NAME));
 
 		loadAll(sourceList, targetFolder);
 
