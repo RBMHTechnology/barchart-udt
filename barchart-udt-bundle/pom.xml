@@ -36,7 +36,7 @@
 		<!-- bundle origin artifacts -->
 		<dependencyGroupId>com.barchart.udt</dependencyGroupId>
 		<dependencyArtifactId>barchart-udt-core</dependencyArtifactId>
-		<dependencyVersion>${snapshotVersion}</dependencyVersion>
+		<dependencyVersion>${project.version}</dependencyVersion>
 
 		<!-- unpack folder -->
 		<dependencyUnpack>${basedir}/target/nar-all</dependencyUnpack>
@@ -121,52 +121,9 @@
 											<groupId>${dependencyGroupId}</groupId>
 											<artifactId>${dependencyArtifactId}</artifactId>
 											<version>${dependencyVersion}</version>
-											<classifier>${arm}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${lin32}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
 											<classifier>${lin64}</classifier>
 											<type>nar</type>
 										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${mac32}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${mac64}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${win32}</classifier>
-											<type>nar</type>
-										</artifactItem>
-										<artifactItem>
-											<groupId>${dependencyGroupId}</groupId>
-											<artifactId>${dependencyArtifactId}</artifactId>
-											<version>${dependencyVersion}</version>
-											<classifier>${win64}</classifier>
-											<type>nar</type>
-										</artifactItem>
-
 									</artifactItems>
 								</configuration>
 							</execution>
@@ -254,6 +211,15 @@
 					</plugin>
 
 				</plugins>
+
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-deploy-plugin</artifactId>
+							<version>2.8.1</version>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 
 			</build>
 		</profile>
