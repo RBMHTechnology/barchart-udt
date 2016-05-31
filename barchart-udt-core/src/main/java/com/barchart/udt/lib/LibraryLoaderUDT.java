@@ -47,7 +47,16 @@ public class LibraryLoaderUDT implements LibraryLoader {
 
 		try {
 			log.info("Loading release libraries.");
-			loadRelease(targetFolder);
+			loadRelease(VersionUDT.BARCHART_NAME, targetFolder);
+			log.info("Release libraries loaded.");
+			return;
+		} catch (final Throwable e) {
+			log.warn("Release libraries missing: {}", e.getMessage());
+		}
+
+		try {
+			log.info("Loading fallback release libraries.");
+			loadRelease(VersionUDT.BARCHART_FALLBACK_NAME, targetFolder);
 			log.info("Release libraries loaded.");
 			return;
 		} catch (final Throwable e) {
@@ -94,13 +103,9 @@ public class LibraryLoaderUDT implements LibraryLoader {
 	}
 
 	/** try to load from JAR class path library */
-	protected void loadRelease(final String targetFolder) throws Exception {
-
-		final String coreName = VersionUDT.BARCHART_NAME;
-
+	protected void loadRelease(final String coreName, final String targetFolder) throws Exception {
 		final List<String> sourceList = PluginPropsUDT
 				.currentReleaseLibraries(coreName);
-		sourceList.addAll(PluginPropsUDT.currentReleaseLibraries(VersionUDT.BARCHART_FALLBACK_NAME));
 
 		loadAll(sourceList, targetFolder);
 
