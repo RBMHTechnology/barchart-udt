@@ -36,6 +36,8 @@
 	</issueManagement>
 
 	<properties>
+		<!-- Use this already published version of native artifacts for ones we cannot build ourselves -->
+		<libFallbackVersion>2.3.0</libFallbackVersion>
 
 		<projectJavaVersion>1.7</projectJavaVersion>
 		<projectMavenVersion>3.0.4</projectMavenVersion>

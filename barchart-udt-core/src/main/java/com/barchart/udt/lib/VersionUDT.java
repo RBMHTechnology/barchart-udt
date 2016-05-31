@@ -51,6 +51,7 @@ public class VersionUDT {
 	protected static final String PROP_UDT_VERSION = "udt.version";
 
 	protected static final String PROP_BARCHART_NAME = "barchart.name";
+	protected static final String PROP_BARCHART_FALLBACK_NAME = "barchart.fallbackName";
 	protected static final String PROP_BARCHART_GROUP = "barchart.groupId";
 	protected static final String PROP_BARCHART_ARTIFACT = "barchart.artifactId";
 	protected static final String PROP_BARCHART_VERSION = "barchart.version";
@@ -59,6 +60,7 @@ public class VersionUDT {
 	public static final String UDT_VERSION;
 
 	public static final String BARCHART_NAME;
+	public static final String BARCHART_FALLBACK_NAME;
 
 	public static final String BARCHART_GROUP;
 	public static final String BARCHART_ARTIFACT;
@@ -72,6 +74,7 @@ public class VersionUDT {
 
 		String udtVersion = UNKNOWN;
 		String name = UNKNOWN;
+		String fallbackName = UNKNOWN;
 		String group = UNKNOWN;
 		String artifact = UNKNOWN;
 		String version = UNKNOWN;
@@ -89,6 +92,7 @@ public class VersionUDT {
 			udtVersion = props.getProperty(PROP_UDT_VERSION);
 
 			name = props.getProperty(PROP_BARCHART_NAME);
+			fallbackName = props.getProperty(PROP_BARCHART_FALLBACK_NAME);
 			group = props.getProperty(PROP_BARCHART_GROUP);
 			artifact = props.getProperty(PROP_BARCHART_ARTIFACT);
 			version = props.getProperty(PROP_BARCHART_VERSION);
@@ -101,6 +105,7 @@ public class VersionUDT {
 		UDT_VERSION = udtVersion;
 
 		BARCHART_NAME = barchartName(name);
+		BARCHART_FALLBACK_NAME = barchartName(fallbackName);
 
 		BARCHART_GROUP = group;
 		BARCHART_ARTIFACT = artifact;
@@ -109,19 +114,8 @@ public class VersionUDT {
 
 	}
 
-	private static final String SNAPSHOT = "-SNAPSHOT";
-
-	/**
-	 * FIXME needs build system change
-	 * <p>
-	 * current contract is to depend on NAR snapshot
-	 */
 	protected static String barchartName(final String name) {
-		if (name.contains(SNAPSHOT)) {
-			return name;
-		} else {
-			return name + SNAPSHOT;
-		}
+		return name;
 	}
 
 	protected static void append(final StringBuilder text, final String EOL) {
