@@ -670,8 +670,11 @@
 					<plugin>
 						<groupId>${narPluginGroupId}</groupId>
 						<artifactId>${narPluginArtifactId}</artifactId>
+						<version>${narPluginVersion}</version>
 						<extensions>true</extensions>
 						<configuration>
+							<os>MacOSX</os>
+							<architecture>x86_64</architecture>
 							<!-- place nar artifacts into test classpath for unit tests; will 
 								also use for jar/nar packaging -->
 							<targetDirectory>${target}/test-classes</targetDirectory>
@@ -683,6 +686,8 @@
 								</library>
 							</libraries>
 							<cpp>
+								<name>g++</name>
+								<toolPath>./</toolPath>
 
 								<debug>true</debug>
 								<optimize>none</optimize>
@@ -719,6 +724,8 @@
 								<jniDirectory>${nativeSrcJNI}</jniDirectory>
 							</javah>
 							<linker>
+								<name>g++</name>
+								<toolPath>./</toolPath>
 								<map>false</map>
 								<clearDefaultOptions>false</clearDefaultOptions>
 								<options>

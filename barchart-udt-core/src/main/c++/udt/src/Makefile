@@ -1,4 +1,4 @@
-C++ = g++
+C++ = c++
 
 ifndef os
    os = LINUX
@@ -8,7 +8,7 @@ ifndef arch
    arch = IA32
 endif
 
-CCFLAGS = -fPIC -Wall -Wextra -D$(os) -finline-functions -O3 -fno-strict-aliasing -fvisibility=hidden
+CCFLAGS = -fPIC -Wall -Wextra -DSO -finline-functions -O3 -fno-strict-aliasing -fvisibility=hidden
 
 ifeq ($(arch), IA32)
    CCFLAGS += -DIA32

@@ -1,0 +1,10 @@
+#!/bin/sh
+set -e
+set -x
+
+# this will be executed from the src directories and we want to make sure we will have enough of
+# our workspace mapped to the container so that absolute target paths will end up being mapped to
+# the real paths
+DIR=$(readlink -f $(pwd)/../../../../..)
+
+sudo docker run --rm -v $DIR:$DIR -v $(pwd):/workdir -e CROSS_TRIPLE=x86_64-apple-darwin -e os=OSX -e arch=AMD64 multiarch/crossbuild c++ $*
