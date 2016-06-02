@@ -53,6 +53,7 @@ written by
    #endif
 #endif
 #include <cmath>
+#include <iostream>
 #include <sstream>
 #include "queue.h"
 #include "core.h"
@@ -2449,8 +2450,10 @@ int CUDT::processData(CUnit* unit)
 
 int CUDT::listen(sockaddr* addr, CPacket& packet)
 {
-   if (m_bClosing)
+   if (m_bClosing) {
+      cerr << "Returning 1002 because socket is already closing..." << endl;
       return 1002;
+  }
 
    if (packet.getLength() != CHandShake::m_iContentSize)
       return 1004;
@@ -2497,6 +2500,9 @@ int CUDT::listen(sockaddr* addr, CPacket& packet)
    {
       if ((hs.m_iVersion != m_iVersion) || (hs.m_iType != m_iSockType))
       {
+         cerr << "Rejecting the request because of mismatch " <<
+            hs.m_iVersion << " != " <<  m_iVersion << " || " <<
+            hs.m_iType << " != " << m_iSockType << endl;
          // mismatch, reject the request
          hs.m_iReqType = 1002;
          int size = CHandShake::m_iContentSize;
@@ -2507,8 +2513,10 @@ int CUDT::listen(sockaddr* addr, CPacket& packet)
       else
       {
          int result = s_UDTUnited.newConnection(m_SocketID, addr, &hs);
-         if (result == -1)
+         if (result == -1) {
+            cerr << "Rejecting because newConnection failed" << endl;
             hs.m_iReqType = 1002;
+         }
 
          // send back a response if connection failed or connection already existed
          // new connection response should be sent in connect()

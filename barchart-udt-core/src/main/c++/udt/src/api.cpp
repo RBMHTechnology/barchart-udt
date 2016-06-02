@@ -48,6 +48,8 @@ written by
    #include <unistd.h>
 #endif
 #include <cstring>
+#include <iostream>
+#include <exception>
 #include "api.h"
 #include "core.h"
 
@@ -318,8 +320,10 @@ int CUDTUnited::newConnection(const UDTSOCKET listen, const sockaddr* peer, CHan
    CUDTSocket* ns = NULL;
    CUDTSocket* ls = locate(listen);
 
-   if (NULL == ls)
+   if (NULL == ls) {
+      cerr << "Listen socket could not be located" << endl;
       return -1;
+   }
 
    // if this connection has already been processed
    if (NULL != (ns = locate(peer, hs->m_iID, hs->m_iISN)))
@@ -353,8 +357,10 @@ int CUDTUnited::newConnection(const UDTSOCKET listen, const sockaddr* peer, CHan
    }
 
    // exceeding backlog, refuse the connection request
-   if (ls->m_pQueuedSockets->size() >= ls->m_uiBackLog)
+   if (ls->m_pQueuedSockets->size() >= ls->m_uiBackLog) {
+      cerr << "Exceeding backlog: " << ls->m_pQueuedSockets->size() << " >= " << ls->m_uiBackLog << endl;
       return -1;
+   }
 
    try
    {
@@ -378,6 +384,8 @@ int CUDTUnited::newConnection(const UDTSOCKET listen, const sockaddr* peer, CHan
    catch (...)
    {
       delete ns;
+
+      cerr << "Error during socket creation" << endl;
       return -1;
    }
 
@@ -444,6 +452,8 @@ int CUDTUnited::newConnection(const UDTSOCKET listen, const sockaddr* peer, CHan
    ERR_ROLLBACK:
    if (error > 0)
    {
+      cerr << "Failed with error " << error << endl;
+
       ns->m_pUDT->close();
       ns->m_Status = CLOSED;
       ns->m_TimeStamp = CTimer::getTime();
